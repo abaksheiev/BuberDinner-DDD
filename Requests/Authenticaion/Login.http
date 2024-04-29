@@ -1,12 +1,9 @@
-$BD.Api_HostAddress = http://localhost:8181
+@host=http://localhost:8282
 
-POST {{$BD.Api_HostAddress}}/auth/register/
+POST {{host}}/auth/login/
 Content-Type: application/json
 
 { 
-  "firstName":"Anton",
-  "lastName":"Baksheiev",
   "email": "anton.baksheiev@gmai.com",
   "password":"Anton1242!"
-
 }
