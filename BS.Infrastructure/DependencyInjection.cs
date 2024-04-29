@@ -1,6 +1,8 @@
 ﻿using BS.Application.Common.Interfaces.Authentication;
 using BS.Application.Common.Interfaces.Services;
+using BS.Application.Persistence;
 using BS.Infrastructure.Authentication;
+using BS.Infrastructure.Persistence;
 using BS.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,8 @@ namespace BS.Infrastructure
 
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

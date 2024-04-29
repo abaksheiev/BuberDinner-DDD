@@ -15,7 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BS.Api", "BS.Api\BS.Api.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{52C77602-FB7F-4ED0-951A-9A943F234317}"
 	ProjectSection(SolutionItems) = preProject
-		Api.md = Api.md
+		Docs\Api.md = Docs\Api.md
+		Docs\DomainModels.md = Docs\DomainModels.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{1FEA6F46-E324-4850-B838-E305573A8948}"
