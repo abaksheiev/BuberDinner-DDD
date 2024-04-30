@@ -1,3 +1,3 @@
-dotnet user-secrets set --project .\BS.Api\ "JwtSettings:Secret" "94ba0730-d5d2-4c16-abdd-1d2c18763150 4ec35196-fb26-424c-920c-0b3bbb458c56 b29994f9-e838-4e2f-82a0-181366c687d5 c9d4fb85-446e-49af-9850-f520ec2ae4bb 6e3c7fcf-f58f-4ac4-acd8-44109651b024 34020770-0e6d-41b2-ac52-cf63c854cddc e0f05a80-c968-49de-83ce-7c1543e8e727 21c6490a-59c4-491e-b880-89c75a5059f0 42862bd5-1561-4e67-a802-f6817252e903 07466ff4-3a11-4fbb-9047-b63d538af3eb"
+dotnet user-secrets set --project .\BS.Api\ "JwtSettings:Secret" "94ba0730-d5d2-4c16-abdd-1d2c18763150"
 
 dotnet user-secrets list --project .\BS.Api\
