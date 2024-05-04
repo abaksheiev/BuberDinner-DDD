@@ -1,4 +1,4 @@
-﻿using BS.Application.Authentication;
+﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BS.Application
@@ -7,7 +7,7 @@ namespace BS.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services) {
 
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
             return services;
         }
