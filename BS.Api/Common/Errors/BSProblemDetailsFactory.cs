@@ -1,4 +1,4 @@
-﻿using BS.Api.Http;
+﻿using BS.Application.Http;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
 
-namespace BS.Api.Common.Errors
+namespace BS.Application.Common.Errors
 {
     public class BSProblemDetailsFactory : ProblemDetailsFactory
     {

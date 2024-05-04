@@ -2,7 +2,7 @@
 using BS.Contracts.Authentication;
 using Mapster;
 
-namespace BS.Api.Common.Mapping
+namespace BS.Application.Common.Mapping
 {
     public class AuthenticationMappingConfig : IRegister
     {

@@ -8,7 +8,7 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BS.Api.Controllers
+namespace BS.Application.Controllers
 {
     [Route("auth")]
     public class AuthenticationController: ApiControllerBase

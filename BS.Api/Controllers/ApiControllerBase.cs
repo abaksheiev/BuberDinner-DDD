@@ -1,19 +1,34 @@
-﻿using BS.Api.Http;
+﻿using BS.Application.Http;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace BS.Api.Controllers
+namespace BS.Application.Controllers
 {
     [ApiController]
     public class ApiControllerBase : ControllerBase
     {
         protected IActionResult Problem(List<Error> errors)
         {
+            if (errors.Count is 0) {
+                return Problem();
+            }
+
+            if (errors.All(error => error.Type == ErrorType.Validation))
+            {
+                return ValidationProblem(errors);
+            }
+
             var firstError = errors[0];
 
             HttpContext.Items[HttpContextItemKeys.Errors] = errors;
 
-            var statusCode = firstError.Type switch
+            return Problem(firstError);
+        }
+
+        private IActionResult Problem(Error errror)
+        {
+            var statusCode = errror.Type switch
             {
                 ErrorType.Conflict => StatusCodes.Status409Conflict,
                 ErrorType.Validation => StatusCodes.Status400BadRequest,
@@ -21,7 +36,21 @@ namespace BS.Api.Controllers
                 _ => StatusCodes.Status500InternalServerError
 
             };
-            return Problem(statusCode: statusCode, title: firstError.Description);
+            return Problem(statusCode: statusCode, title: errror.Description);
+        }
+
+        private IActionResult ValidationProblem(List<Error> errors)
+        {
+            var modelStateDictionary = new ModelStateDictionary();
+
+            foreach (var error in errors)
+            {
+                modelStateDictionary.AddModelError(
+                    error.Code,
+                    error.Description);
+            }
+
+            return ValidationProblem(modelStateDictionary);
         }
     }
 }

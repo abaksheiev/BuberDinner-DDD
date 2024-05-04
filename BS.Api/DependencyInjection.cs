@@ -1,8 +1,8 @@
-﻿using BS.Api.Common.Errors;
-using BS.Api.Common.Mapping;
+﻿using BS.Application.Common.Errors;
+using BS.Application.Common.Mapping;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-namespace BS.Api
+namespace BS.Application
 {
     public static class DependencyInjection
     {

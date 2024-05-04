@@ -1,7 +1,7 @@
 using BS.Application;
 using BS.Infrastructure;
 
-namespace BS.Api
+namespace BS.Application
 {
     public class Program
     {

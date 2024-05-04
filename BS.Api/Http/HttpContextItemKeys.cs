@@ -1,4 +1,4 @@
-﻿namespace BS.Api.Http
+﻿namespace BS.Application.Http
 {
     public static class HttpContextItemKeys
     {

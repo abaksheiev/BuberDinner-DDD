@@ -3,7 +3,7 @@ using MapsterMapper;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace BS.Api.Common.Mapping
+namespace BS.Application.Common.Mapping
 {
     public static class DependencyInjection
     {

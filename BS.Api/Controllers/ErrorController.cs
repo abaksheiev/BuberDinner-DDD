@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BS.Api.Controllers
+namespace BS.Application.Controllers
 {
     public class ErrorController : ControllerBase
     {
