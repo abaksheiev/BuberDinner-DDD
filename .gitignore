@@ -1,11 +1,4 @@
 .vs/
-BS.Api/
-BS.Application/bin/Debug/net8.0/BS.Domain.dll
-BS.Application/obj/
-BS.Contracts/obj/
-BS.Domain/obj/
-BS.Infrastructure/bin/
-BS.Infrastructure/obj/
-BS.Contracts/bin/
-BS.Domain/bin/
-BS.Application/bin/
+[Bb]in/ 
+[Oo]bj/ 
+[Oo]ut/ 
