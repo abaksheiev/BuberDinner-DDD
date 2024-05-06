@@ -6,11 +6,13 @@ using BS.Domain.Common.Errors;
 using ErrorOr;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BS.Application.Controllers
 {
     [Route("auth")]
+    [AllowAnonymous]
     public class AuthenticationController: ApiControllerBase
     {
         private readonly ISender _mediator;

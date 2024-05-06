@@ -32,6 +32,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.dm = Readme.dm
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dinners", "Dinners", "{6D3BFBE2-875A-4D3A-929C-5BEBF799F887}"
+	ProjectSection(SolutionItems) = preProject
+		ListDinners.http = ListDinners.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +69,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DF30C301-E175-4402-8FAC-4A1180A5937A} = {1FEA6F46-E324-4850-B838-E305573A8948}
+		{6D3BFBE2-875A-4D3A-929C-5BEBF799F887} = {1FEA6F46-E324-4850-B838-E305573A8948}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00D5504E-2A59-40A8-B54B-B6A7E2407AA5}
