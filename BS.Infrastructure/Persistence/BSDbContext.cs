@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using BS.Domain.MenuAggregates;
+﻿using BS.Domain.MenuAggregates;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace BS.Infrastructure.Persistence
 {
@@ -14,9 +9,16 @@ namespace BS.Infrastructure.Persistence
     {
         public BSDbContext(DbContextOptions<BSDbContext> options) : base(options)
         {
-
+       
         }
 
         public DbSet<Menu> Menus { get; set; } = null;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BSDbContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

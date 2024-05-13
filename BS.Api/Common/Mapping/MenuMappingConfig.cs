@@ -19,7 +19,7 @@ namespace BS.Api.Common.Mapping
 
             config.NewConfig<Menu, MenuResponse>()
                 .Map(dest => dest.Id, src => src.Id.Value)
-                .Map(dest => dest.AverageRating, src => src.AverageRating)
+                .Map(dest => dest.AverageRating, src => src.AverageRating.Value)
                 .Map(dest => dest.HostId, src => src.HostId.Value)
                 .Map(dest => dest.DinnerIds, src => src.DinnerIds.Select(i=>i.Value))
                 .Map(dest => dest.MenuReviewIds, src => src.MenuReviewIds.Select(i => i.Value))

@@ -33,7 +33,8 @@ namespace BS.Infrastructure
         private static IServiceCollection AddPersistence(this IServiceCollection services)
         {
             services.AddDbContext<BSDbContext>(options =>
-                     options.UseSqlServer("Server=sql-data;Database=BuberDinner;User Id=sa;Password=amiko123!;TrustServerCertificate=True"));
+                     options.UseSqlServer("Data Source=(localdb)\\ProjectModels;Initial Catalog=WebCqrs;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
+
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();

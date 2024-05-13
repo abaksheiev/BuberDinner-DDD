@@ -24,5 +24,10 @@ namespace BS.Domain.MenuAggregates.Entities
             return new(MenuSectionId.CreateUnique(), name, description, items);
         }
 
+#pragma warning disable CS7036
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        private MenuSection() { }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS7036
     }
 }

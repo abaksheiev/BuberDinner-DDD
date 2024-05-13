@@ -74,9 +74,9 @@ namespace BS.Infrastructure.Persistence.Configurations
                 sectionBuilder
                     .Property(s => s.Description)
                     .HasMaxLength(100);
-                //--
+               
                 sectionBuilder.OwnsMany(s => s.Items, itemBuilder => ConfigureMenuItemsTable(itemBuilder));
-                //--
+               
                 sectionBuilder
                     .Navigation(s => s.Items).Metadata
                     .SetField("_items");
