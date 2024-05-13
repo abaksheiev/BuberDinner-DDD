@@ -1,15 +1,19 @@
-﻿using BS.Application.Common.Interfaces.Authentication;
+﻿using System.Text;
+
+using BS.Application.Common.Interfaces.Authentication;
 using BS.Application.Common.Interfaces.Services;
 using BS.Application.Persistence;
 using BS.Infrastructure.Authentication;
 using BS.Infrastructure.Persistence;
+using BS.Infrastructure.Persistence.Repositories;
 using BS.Infrastructure.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace BS.Infrastructure
 {
@@ -17,10 +21,22 @@ namespace BS.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
         {
-            services.AddAuth(configuration);
+            services
+                .AddAuth(configuration)
+                .AddPersistence();
+
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+            
+            return services;
+        }
+
+        private static IServiceCollection AddPersistence(this IServiceCollection services)
+        {
+            services.AddDbContext<BSDbContext>(options =>
+                     options.UseSqlServer("Server=sql-data;Database=BuberDinner;User Id=sa;Password=amiko123!;TrustServerCertificate=True"));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
             return services;
         }
 

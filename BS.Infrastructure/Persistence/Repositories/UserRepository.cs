@@ -1,7 +1,7 @@
 ﻿using BS.Application.Persistence;
 using BS.Domain.Entities;
 
-namespace BS.Infrastructure.Persistence
+namespace BS.Infrastructure.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {

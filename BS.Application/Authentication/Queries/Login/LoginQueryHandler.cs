@@ -1,15 +1,10 @@
 ﻿using BS.Application.Authentication.Common;
 using BS.Application.Common.Interfaces.Authentication;
 using BS.Application.Persistence;
-using ErrorOr;
-using MediatR;
-using BS.Application.Authentication.Common;
-using BS.Application.Common.Interfaces.Authentication;
-using BS.Application.Persistence;
-using ErrorOr;
-using MediatR;
-using BS.Domain.Entities;
 using BS.Domain.Common.Errors;
+using BS.Domain.Entities;
+using ErrorOr;
+using MediatR;
 
 namespace BS.Application.Authentication.Queries.Login
 {

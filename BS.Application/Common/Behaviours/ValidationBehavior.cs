@@ -1,12 +1,15 @@
 ﻿using ErrorOr;
+
 using FluentValidation;
+
 using MediatR;
 
 namespace BS.Application.Common.Behaviors
 {
-    public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : IRequest<TRequest>
-        where TResponse : IErrorOr
+    public class ValidationBehavior<TRequest, TResponse> :
+        IPipelineBehavior<TRequest, TResponse>
+            where TRequest : IRequest<TResponse>
+            where TResponse : IErrorOr
     {
         private readonly IValidator<TRequest>? _validator;
 
@@ -15,56 +18,27 @@ namespace BS.Application.Common.Behaviors
             _validator = validator;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
-        {
-            if (_validator is null)
-            {
-                return await next();
-            }
-
-            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
-
-            if (validationResult.IsValid)
-            {
-                return await next();
-
-            }
-
-            var errors = validationResult.Errors
-                .ConvertAll(validationFailure => Error.Validation(
-                    validationFailure.PropertyName,
-                    validationFailure.ErrorMessage))
-                .ToList();
-
-
-            // after the handler
-            return (dynamic)errors;
-        }
-        
-        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
-        {
-            if (_validator is null)
-            {
-                return await next();
-            }
-
-            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+        public async Task<TResponse> Handle(
+            TRequest request,
             
+            RequestHandlerDelegate<TResponse> next,
+            CancellationToken cancellationToken)
+        {
+            if (_validator is null)
+            {
+                return await next();
+            }
+
+            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+
             if (validationResult.IsValid)
             {
                 return await next();
-
             }
 
-            var errors = validationResult.Errors
-                .ConvertAll(validationFailure => Error.Validation(
-                    validationFailure.PropertyName,
-                    validationFailure.ErrorMessage))
-                .ToList();
-
-
-            // after the handler
+            var errors = validationResult.Errors.ConvertAll(validationFailure => Error.Validation(validationFailure.PropertyName, validationFailure.ErrorMessage));
             return (dynamic)errors;
         }
+ 
     }
 }

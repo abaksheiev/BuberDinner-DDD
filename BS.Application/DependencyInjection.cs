@@ -1,4 +1,9 @@
-﻿using BS.Application.Common.Behaviors;
+﻿using System.Reflection;
+
+using BS.Application.Common.Behaviors;
+
+using FluentValidation;
+
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +17,7 @@ namespace BS.Application
 
             // Register validation behavior
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }
