@@ -1,13 +1,11 @@
-﻿using BS.Domain.MenuAggregates;
-
-using ErrorOr;
+﻿using ErrorOr;
 
 using MediatR;
 
 namespace BS.Application.Menus.Commands.CreateMenu
 {
     public record CreateMenuCommand(string HostId, string Name, string Description, List<MenuSectionCommand> Sections)
-        :IRequest<ErrorOr<Menu>>;
+        :IRequest<ErrorOr<BS.Domain.MenuAggregates.Menu>>;
 
     public record MenuSectionCommand(string Name, string Description, List<MenuItemCommand> Items);
 

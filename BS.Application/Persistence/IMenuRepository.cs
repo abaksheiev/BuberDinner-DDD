@@ -10,6 +10,6 @@ namespace BS.Application.Persistence
 {
     public interface IMenuRepository
     {
-        void Add(Menu menu);
+        void Add(BS.Domain.MenuAggregates.Menu menu);
     }
 }

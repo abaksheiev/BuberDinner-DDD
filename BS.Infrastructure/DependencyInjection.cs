@@ -5,6 +5,7 @@ using BS.Application.Common.Interfaces.Services;
 using BS.Application.Persistence;
 using BS.Infrastructure.Authentication;
 using BS.Infrastructure.Persistence;
+using BS.Infrastructure.Persistence.Interceptors;
 using BS.Infrastructure.Persistence.Repositories;
 using BS.Infrastructure.Services;
 
@@ -38,6 +39,7 @@ namespace BS.Infrastructure
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<PublishDomainEventsInterceptor>();
             return services;
         }
 

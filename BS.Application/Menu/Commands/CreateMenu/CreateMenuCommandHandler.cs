@@ -8,7 +8,7 @@ using MediatR;
 
 namespace BS.Application.Menus.Commands.CreateMenu
 {
-    public class CreateMenuCommandHandler : IRequestHandler<CreateMenuCommand, ErrorOr<Menu>>
+    public class CreateMenuCommandHandler : IRequestHandler<CreateMenuCommand, ErrorOr<BS.Domain.MenuAggregates.Menu>>
     {
         private readonly IMenuRepository _menuRepository;
         public CreateMenuCommandHandler(IMenuRepository menuRepository)
@@ -16,11 +16,11 @@ namespace BS.Application.Menus.Commands.CreateMenu
             _menuRepository = menuRepository;
         }
 
-        public async Task<ErrorOr<Menu>> Handle(CreateMenuCommand request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<BS.Domain.MenuAggregates.Menu>> Handle(CreateMenuCommand request, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
             // Create MenuAggregates
-            var menu = Menu.Create(
+            var menu = BS.Domain.MenuAggregates.Menu.Create(
             hostId: HostId.Create( Guid.Parse( request.HostId)),
             name: request.Name,
             description: request.Description,

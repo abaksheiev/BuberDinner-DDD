@@ -5,6 +5,7 @@ using BS.Domain.MenuAggregates.Entities;
 using BS.Domain.MenuAggregates.ValueObjects;
 using BS.Domain.MenuReview.ValueObjects;
 using BS.Domain.Common.ValueObjects;
+using BS.Domain.MenuAggregates.Events;
 
 namespace BS.Domain.MenuAggregates
 {
@@ -56,11 +57,12 @@ namespace BS.Domain.MenuAggregates
                 AverageRating.CreateNew(0),
                 sections ?? new());
 
-           // menu.AddDomainEvent(new MenuCreated(menu));
+            menu.AddDomainEvent(new MenuCreated(menu));
 
             return menu;
         }
 
+       
 #pragma warning disable CS8618
         private Menu() { }
 #pragma warning restore CS8618
